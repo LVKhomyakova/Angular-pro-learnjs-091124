@@ -1,4 +1,5 @@
-import { Component } from '@angular/core';
+import { Component, ContentChildren, QueryList } from '@angular/core';
+import { Animal } from '../animal';
 
 
 @Component({
@@ -6,10 +7,11 @@ import { Component } from '@angular/core';
   templateUrl: './zoo.component.html',
 })
 export class ZooComponent {
-
+  @ContentChildren(Animal)
+  private animals: QueryList<Animal> | undefined;
   // animals ?
 
   say() {
-    this.animals.forEach(animal => animal.say());
+    this.animals?.forEach(animal => animal.say());
   }
 }

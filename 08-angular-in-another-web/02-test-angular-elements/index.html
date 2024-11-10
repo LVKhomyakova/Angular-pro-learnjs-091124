@@ -5,8 +5,23 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <title>Angular Fanatic</title>
     <meta name="viewport" content="width=device-width, initial-scale=1">
+    <script src="../01-web-component/dist/angular-element.js"></script>
 </head>
 <body>
+    <custom-hello name="Egor">
+        Its contents
+    </custom-hello>
 
+    <script>
+        const element = document.querySelector('custom-hello');
+
+        element.addEventListener('clicked', event => {
+            console.log(event.detail);
+        });
+
+        setTimeout(() => {
+            element.innerHTML = 'New content'
+        }, 3000);
+    </script>
 </body>
 </html>

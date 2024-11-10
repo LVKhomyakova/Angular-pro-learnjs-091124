@@ -1,5 +1,4 @@
 import { Component } from '@angular/core';
-import { findBigPrime } from './find-big-prime';
 
 @Component({
   selector: 'app-root',
@@ -17,6 +16,17 @@ export class AppComponent {
   }
 
   setBigPrime() {
-    this.bigPrime = findBigPrime();
+    // this.bigPrime = findBigPrime();
+    const worker = new Worker(
+      new URL('big-prime.worker', import.meta.url)
+    );
+
+    worker.addEventListener('message', ({data}) => {
+      this.bigPrime = data;
+
+      worker.terminate();
+    });
+
+    worker.postMessage('hello');
   }
 }
