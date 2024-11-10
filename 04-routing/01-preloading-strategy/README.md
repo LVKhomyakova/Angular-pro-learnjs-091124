@@ -18,14 +18,15 @@
 })
 export class CustomPreloading implements PreloadingStrategy {
     // `preload` вызывается для каждого лениво загружаемого пути, кроме того, что уже загружен
-    preload(route: Route, load: () => Observable<any>): Observable<any> {
+    preload(route: Route, load$: () => Observable<any>): Observable<any> {
         if (...) {
             // если хотим предзагрузить чанк - возвращаем из метода результат вызова функции полученной во втором аргументе метода `preload` - `load()`
-            return load();
+            return load$();
         }
 
         // если предзагрузка не требуется - возвращаем поток с `null` - `of(null)`
-        return of(null);
+        // return of(null);
+        return EMPTY;
     }
 }
 ```

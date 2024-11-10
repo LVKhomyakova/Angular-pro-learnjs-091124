@@ -16,6 +16,6 @@ export class FirstComponent {
   }
 
   up() {
-    this.dataService.setData(this.number+1);
+    this.dataService.setData(this.number + 1);
   }
 }

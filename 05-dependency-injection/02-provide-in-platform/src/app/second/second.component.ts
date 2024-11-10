@@ -16,7 +16,7 @@ export class SecondComponent {
   }
 
   down() {
-    this.dataService.setData(this.number-1);
+    this.dataService.setData(this.number - 1);
   }
 
 }
